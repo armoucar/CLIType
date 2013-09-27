@@ -8,23 +8,12 @@ var CLIType = (function(window, undefined) {
         htmlLetters = [];
     var i, l;
     for (i = 0, l = letters.length; i < l; i ++) {
-      var letter = doc.createTextNode(letters[i]),
-          htmlLetter = doc.createElement("span");
+      var letter = doc.createTextNode(letters[i]);
 
-      htmlLetter.className += "untyped"
-      htmlLetter.appendChild(letter);
-      htmlLetters.push(htmlLetter);
+      htmlLetters.push(letter);
     }
 
     return htmlLetters;
-  };
-
-  var _showTypingEffect = function(place) {
-    var letters = place.children;
-    var i, l;
-    for (i = 0, l = letters.length; i < l; i ++) {
-      var v = letters[i];
-    }
   };
 
   var ColdTime = function(sel, htmlLetter, timeoutToShow) {
@@ -55,9 +44,11 @@ var CLIType = (function(window, undefined) {
     for (i = 0, l = functions.length; i < l; i ++) {
       var v = functions[i];
       timeoutSum += v.timeoutToShow;
+
       setTimeout((function (v) {
         return function() { v.func.apply(v); };
       })(v), timeoutSum);
+
     }
   };
 
